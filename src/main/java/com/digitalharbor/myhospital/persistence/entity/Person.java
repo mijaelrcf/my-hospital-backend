@@ -1,18 +1,29 @@
 package com.digitalharbor.myhospital.persistence.entity;
 
-import org.hibernate.annotations.common.reflection.XProperty;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+@MappedSuperclass
+public class Person extends BaseEntity {
 
-@Entity
-@Table(name = "person")
-public class Person {
+    private String name;
 
+    @Column(name = "last_name")
     private String lastName;
     private String birthdate;
-    private String direction;
+    private String address;
+    @Column(name = "profile_picture")
     private String profilePicture;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getLastName() {
         return lastName;
@@ -30,12 +41,12 @@ public class Person {
         this.birthdate = birthdate;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getProfilePicture() {
