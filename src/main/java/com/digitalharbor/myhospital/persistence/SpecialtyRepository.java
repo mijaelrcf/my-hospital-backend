@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.persistence;
 
-import com.digitalharbor.myhospital.domain.SpecialtyDomain;
+import com.digitalharbor.myhospital.domain.dto.SpecialtyDto;
 import com.digitalharbor.myhospital.domain.repository.ISpecialtyRepository;
 import com.digitalharbor.myhospital.persistence.crud.SpecialtyCrudRepository;
 import com.digitalharbor.myhospital.persistence.entity.Specialty;
@@ -20,19 +20,19 @@ public class SpecialtyRepository implements ISpecialtyRepository {
     private SpecialtyMapper mapper;
 
     @Override
-    public List<SpecialtyDomain> getAll() {
+    public List<SpecialtyDto> getAll() {
         List<Specialty> specialtys = (List<Specialty>) specialtyCrudRepository.findAll();
         return mapper.toSpecialtys(specialtys);
     }
 
     @Override
-    public Optional<SpecialtyDomain> get(int id) {
+    public Optional<SpecialtyDto> get(int id) {
         return specialtyCrudRepository.findById(id).map(specialty -> mapper.toSpecialty(specialty));
     }
 
     @Override
-    public SpecialtyDomain save (SpecialtyDomain specialtyDomain){
-        Specialty specialty = mapper.toSpecialty(specialtyDomain);
+    public SpecialtyDto save (SpecialtyDto specialtyDto){
+        Specialty specialty = mapper.toSpecialty(specialtyDto);
         return mapper.toSpecialty(specialtyCrudRepository.save(specialty));
     }
 

@@ -1,23 +1,18 @@
-package com.digitalharbor.myhospital.domain;
+package com.digitalharbor.myhospital.domain.dto;
 
-import com.digitalharbor.myhospital.persistence.entity.Record;
-
-import java.util.Set;
-
-public class PatientDomain {
+public class DoctorDto {
     private String name;
     private String lastName;
     private String birthdate;
     private String address;
     private String profilePicture;
-    private Set<Record> records;
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
@@ -50,13 +45,5 @@ public class PatientDomain {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
-    }
-
-    public Set<Record> getRecords() {
-        return records;
-    }
-
-    public void setRecords(Set<Record> records) {
-        this.records = records;
     }
 }

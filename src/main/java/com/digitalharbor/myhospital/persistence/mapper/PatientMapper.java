@@ -1,7 +1,6 @@
 package com.digitalharbor.myhospital.persistence.mapper;
 
-import com.digitalharbor.myhospital.domain.PatientDomain;
-import com.digitalharbor.myhospital.persistence.entity.Hospital;
+import com.digitalharbor.myhospital.domain.dto.PatientDto;
 import com.digitalharbor.myhospital.persistence.entity.Patient;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -15,14 +14,14 @@ public interface PatientMapper {
     @Mappings({
             @Mapping(source = "name", target = "name")
     })
-    PatientDomain toPatient(Patient patient);
+    PatientDto toPatient(Patient patient);
 
-    List<PatientDomain> toPatients (List<Patient> patientList);
+    List<PatientDto> toPatients (List<Patient> patientList);
 
     @InheritInverseConfiguration
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "updatedDate", ignore = true)
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "updatedBy", ignore = true)
-    Patient toPatient(PatientDomain patient);
+    Patient toPatient(PatientDto patient);
 }

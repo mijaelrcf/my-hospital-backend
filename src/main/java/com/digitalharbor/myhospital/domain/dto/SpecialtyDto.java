@@ -1,6 +1,6 @@
-package com.digitalharbor.myhospital.domain;
+package com.digitalharbor.myhospital.domain.dto;
 
-public class SpecialtyDomain {
+public class SpecialtyDto {
     private String name;
     private String description;
     private String avatar;

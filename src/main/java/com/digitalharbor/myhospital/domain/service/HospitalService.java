@@ -1,11 +1,9 @@
 package com.digitalharbor.myhospital.domain.service;
 
-import com.digitalharbor.myhospital.domain.HospitalDomain;
+import com.digitalharbor.myhospital.domain.dto.HospitalDto;
 import com.digitalharbor.myhospital.domain.repository.IHospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,16 +13,16 @@ public class HospitalService {
     @Autowired
     private IHospitalRepository hospitalRepository;
 
-    public List<HospitalDomain> getAll() {
+    public List<HospitalDto> getAll() {
         return hospitalRepository.getAll();
     }
 
-    public Optional<HospitalDomain> get(int id) {
+    public Optional<HospitalDto> get(int id) {
         return hospitalRepository.get(id);
     }
 
-    public HospitalDomain save(HospitalDomain hospitalDomain) {
-        return hospitalRepository.save(hospitalDomain);
+    public HospitalDto save(HospitalDto hospitalDto) {
+        return hospitalRepository.save(hospitalDto);
     }
 
     public boolean delete (int id) {

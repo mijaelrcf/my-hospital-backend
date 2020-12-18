@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.web.controller;
 
-import com.digitalharbor.myhospital.domain.PatientDomain;
+import com.digitalharbor.myhospital.domain.dto.PatientDto;
 import com.digitalharbor.myhospital.domain.service.PatientService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/patients")
@@ -22,7 +21,7 @@ public class PatientController {
     @GetMapping()
     @ApiOperation("Get all patients")
     @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<PatientDomain>> getAll() {
+    public ResponseEntity<List<PatientDto>> getAll() {
         return new ResponseEntity<>(patientService.getAll(), HttpStatus.OK);
     }
 
@@ -32,15 +31,15 @@ public class PatientController {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 400, message = "NOT FOUND"),
     })
-    public ResponseEntity<PatientDomain> get(@PathVariable("id") int id) {
+    public ResponseEntity<PatientDto> get(@PathVariable("id") int id) {
         return patientService.get(id)
                 .map(x -> new ResponseEntity<>(x, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping()
-    public ResponseEntity<PatientDomain> save (@RequestBody PatientDomain patientDomain) {
-        return new ResponseEntity<>(patientService.save(patientDomain), HttpStatus.CREATED);
+    public ResponseEntity<PatientDto> save (@RequestBody PatientDto patientDto) {
+        return new ResponseEntity<>(patientService.save(patientDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

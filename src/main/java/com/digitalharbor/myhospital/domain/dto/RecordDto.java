@@ -1,8 +1,8 @@
-package com.digitalharbor.myhospital.domain;
+package com.digitalharbor.myhospital.domain.dto;
 
 import java.time.LocalDateTime;
 
-public class RecordDomain {
+public class RecordDto {
     private String description;
     private LocalDateTime recordDate;
 

@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.web.controller;
 
-import com.digitalharbor.myhospital.domain.RecordDomain;
+import com.digitalharbor.myhospital.domain.dto.RecordDto;
 import com.digitalharbor.myhospital.domain.service.RecordService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -21,7 +21,7 @@ public class RecordController {
     @GetMapping()
     @ApiOperation("Get all records")
     @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<RecordDomain>> getAll() {
+    public ResponseEntity<List<RecordDto>> getAll() {
         return new ResponseEntity<>(recordService.getAll(), HttpStatus.OK);
     }
 
@@ -31,15 +31,15 @@ public class RecordController {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 400, message = "NOT FOUND"),
     })
-    public ResponseEntity<RecordDomain> get(@PathVariable("id") int id) {
+    public ResponseEntity<RecordDto> get(@PathVariable("id") int id) {
         return recordService.get(id)
                 .map(x -> new ResponseEntity<>(x, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping()
-    public ResponseEntity<RecordDomain> save (@RequestBody RecordDomain recordDomain) {
-        return new ResponseEntity<>(recordService.save(recordDomain), HttpStatus.CREATED);
+    public ResponseEntity<RecordDto> save (@RequestBody RecordDto recordDto) {
+        return new ResponseEntity<>(recordService.save(recordDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.persistence;
 
-import com.digitalharbor.myhospital.domain.RecordDomain;
+import com.digitalharbor.myhospital.domain.dto.RecordDto;
 import com.digitalharbor.myhospital.domain.repository.IRecordRepository;
 import com.digitalharbor.myhospital.persistence.crud.RecordCrudRepository;
 import com.digitalharbor.myhospital.persistence.entity.Record;
@@ -20,19 +20,19 @@ public class RecordRepository implements IRecordRepository {
     private RecordMapper mapper;
 
     @Override
-    public List<RecordDomain> getAll() {
+    public List<RecordDto> getAll() {
         List<Record> records = (List<Record>) recordCrudRepository.findAll();
         return mapper.toRecords(records);
     }
 
     @Override
-    public Optional<RecordDomain> get(int id) {
+    public Optional<RecordDto> get(int id) {
         return recordCrudRepository.findById(id).map(record -> mapper.toRecord(record));
     }
 
     @Override
-    public RecordDomain save (RecordDomain recordDomain){
-        Record record = mapper.toRecord(recordDomain);
+    public RecordDto save (RecordDto recordDto){
+        Record record = mapper.toRecord(recordDto);
         return mapper.toRecord(recordCrudRepository.save(record));
     }
 

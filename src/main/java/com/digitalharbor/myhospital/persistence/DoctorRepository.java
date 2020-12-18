@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.persistence;
 
-import com.digitalharbor.myhospital.domain.DoctorDomain;
+import com.digitalharbor.myhospital.domain.dto.DoctorDto;
 import com.digitalharbor.myhospital.domain.repository.IDoctorRepository;
 import com.digitalharbor.myhospital.persistence.crud.DoctorCrudRepository;
 import com.digitalharbor.myhospital.persistence.entity.Doctor;
@@ -20,19 +20,19 @@ public class DoctorRepository implements IDoctorRepository {
     private DoctorMapper mapper;
 
     @Override
-    public List<DoctorDomain> getAll() {
+    public List<DoctorDto> getAll() {
         List<Doctor> doctors = (List<Doctor>) doctorCrudRepository.findAll();
         return mapper.toDoctors(doctors);
     }
 
     @Override
-    public Optional<DoctorDomain> get(int id) {
+    public Optional<DoctorDto> get(int id) {
         return doctorCrudRepository.findById(id).map(doctor -> mapper.toDoctor(doctor));
     }
 
     @Override
-    public DoctorDomain save (DoctorDomain doctorDomain){
-        Doctor doctor = mapper.toDoctor(doctorDomain);
+    public DoctorDto save (DoctorDto doctorDto){
+        Doctor doctor = mapper.toDoctor(doctorDto);
         return mapper.toDoctor(doctorCrudRepository.save(doctor));
     }
 

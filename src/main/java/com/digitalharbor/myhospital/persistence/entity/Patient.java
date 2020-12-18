@@ -11,7 +11,7 @@ public class Patient extends Person {
     @JoinColumn(name = "hospital_id", referencedColumnName = "id", nullable = false)
     private Hospital hospitals;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
     private Set<Record> records;
 
     public Hospital getHospitals() {

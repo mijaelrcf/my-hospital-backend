@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.domain.service;
 
-import com.digitalharbor.myhospital.domain.PatientDomain;
+import com.digitalharbor.myhospital.domain.dto.PatientDto;
 import com.digitalharbor.myhospital.domain.repository.IPatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +13,15 @@ public class PatientService {
     @Autowired
     private IPatientRepository patientRepository;
 
-    public List<PatientDomain> getAll() {
+    public List<PatientDto> getAll() {
         return patientRepository.getAll();
     }
 
-    public Optional<PatientDomain> get(int id) {
+    public Optional<PatientDto> get(int id) {
         return patientRepository.get(id);
     }
 
-    public PatientDomain save(PatientDomain patient) {
+    public PatientDto save(PatientDto patient) {
         return patientRepository.save(patient);
     }
 

@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.persistence.mapper;
 
-import com.digitalharbor.myhospital.domain.RecordDomain;
+import com.digitalharbor.myhospital.domain.dto.RecordDto;
 import com.digitalharbor.myhospital.persistence.entity.Record;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -12,16 +12,18 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface RecordMapper {
     @Mappings({
-            //@Mapping(source = "name", target = "name")
+            @Mapping(source = "description", target = "description"),
+            @Mapping(source = "recordDate", target = "recordDate")
     })
-    RecordDomain toRecord(Record record);
+    RecordDto toRecord(Record record);
 
-    List<RecordDomain> toRecords (List<Record> recordList);
+    List<RecordDto> toRecords (List<Record> recordList);
 
     @InheritInverseConfiguration
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "updatedDate", ignore = true)
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "updatedBy", ignore = true)
-    Record toRecord(RecordDomain record);
+    @Mapping(target = "doctor", ignore = true)
+    Record toRecord(RecordDto record);
 }

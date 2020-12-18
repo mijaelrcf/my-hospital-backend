@@ -1,6 +1,6 @@
 package com.digitalharbor.myhospital.persistence.mapper;
 
-import com.digitalharbor.myhospital.domain.SpecialtyDomain;
+import com.digitalharbor.myhospital.domain.dto.SpecialtyDto;
 import com.digitalharbor.myhospital.persistence.entity.Specialty;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -14,14 +14,14 @@ public interface SpecialtyMapper {
     @Mappings({
             //@Mapping(source = "name", target = "name")
     })
-    SpecialtyDomain toSpecialty(Specialty specialty);
+    SpecialtyDto toSpecialty(Specialty specialty);
 
-    List<SpecialtyDomain> toSpecialtys (List<Specialty> specialtyList);
+    List<SpecialtyDto> toSpecialtys (List<Specialty> specialtyList);
 
     @InheritInverseConfiguration
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "updatedDate", ignore = true)
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "updatedBy", ignore = true)
-    Specialty toSpecialty(SpecialtyDomain specialty);
+    Specialty toSpecialty(SpecialtyDto specialty);
 }

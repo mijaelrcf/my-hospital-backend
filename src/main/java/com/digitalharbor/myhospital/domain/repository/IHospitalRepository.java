@@ -1,13 +1,13 @@
 package com.digitalharbor.myhospital.domain.repository;
 
-import com.digitalharbor.myhospital.domain.HospitalDomain;
+import com.digitalharbor.myhospital.domain.dto.HospitalDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IHospitalRepository {
-    List<HospitalDomain> getAll();
-    Optional<HospitalDomain> get(int id);
-    HospitalDomain save (HospitalDomain hospital);
+    List<HospitalDto> getAll();
+    Optional<HospitalDto> get(int id);
+    HospitalDto save (HospitalDto hospital);
     void delete (int id);
 }
