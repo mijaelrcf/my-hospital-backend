@@ -43,10 +43,15 @@ public class HospitalController {
         return new ResponseEntity<>(hospitalService.save(hospital), HttpStatus.CREATED);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<HospitalDto> update (@RequestBody HospitalDto hospital) {
+        return new ResponseEntity<>(hospitalService.update(hospital), HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity delete (@PathVariable("id") int id) {
         if (hospitalService.delete(id)) {
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(id, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }

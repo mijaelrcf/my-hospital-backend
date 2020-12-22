@@ -5,6 +5,8 @@ import java.util.Set;
 public class HospitalDto {
     private Integer id;
     private String name;
+    private String createdBy;
+    private String updatedBy;
     //private Set<PatientDomain> patients;
     //private Set<DoctorDto> doctors;
 
@@ -24,7 +26,22 @@ public class HospitalDto {
         this.name = name;
     }
 
-//    public Set<PatientDomain> getPatients() {
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+    //    public Set<PatientDomain> getPatients() {
 //        return patients;
 //    }
 //

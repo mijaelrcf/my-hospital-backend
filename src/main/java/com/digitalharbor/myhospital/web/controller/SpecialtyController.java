@@ -1,5 +1,6 @@
 package com.digitalharbor.myhospital.web.controller;
 
+import com.digitalharbor.myhospital.domain.dto.HospitalDto;
 import com.digitalharbor.myhospital.domain.dto.SpecialtyDto;
 import com.digitalharbor.myhospital.domain.service.SpecialtyService;
 import io.swagger.annotations.ApiOperation;
@@ -42,10 +43,15 @@ public class SpecialtyController {
         return new ResponseEntity<>(specialtyService.save(specialtyDto), HttpStatus.CREATED);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<SpecialtyDto> update (@RequestBody SpecialtyDto specialtyDto) {
+        return new ResponseEntity<>(specialtyService.update(specialtyDto), HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity delete (@PathVariable("id") int id) {
         if (specialtyService.delete(id)) {
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(id, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }

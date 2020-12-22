@@ -9,5 +9,6 @@ public interface IHospitalRepository {
     List<HospitalDto> getAll();
     Optional<HospitalDto> get(int id);
     HospitalDto save (HospitalDto hospital);
+    HospitalDto update (HospitalDto hospital);
     void delete (int id);
 }

@@ -11,23 +11,23 @@ import java.util.Optional;
 @Service
 public class DoctorService {
     @Autowired
-    private IDoctorRepository doctorRepository;
+    private IDoctorRepository iDoctorRepository;
 
     public List<DoctorDto> getAll() {
-        return doctorRepository.getAll();
+        return iDoctorRepository.getAll();
     }
 
     public Optional<DoctorDto> get(int id) {
-        return doctorRepository.get(id);
+        return iDoctorRepository.get(id);
     }
 
     public DoctorDto save(DoctorDto doctor) {
-        return doctorRepository.save(doctor);
+        return iDoctorRepository.save(doctor);
     }
 
     public boolean delete (int id) {
         if (get(id).isPresent()) {
-            doctorRepository.delete(id);
+            iDoctorRepository.delete(id);
             return true;
         } else {
             return false;

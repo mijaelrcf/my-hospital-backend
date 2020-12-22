@@ -8,6 +8,7 @@ import com.digitalharbor.myhospital.persistence.mapper.RecordMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,7 @@ public class RecordRepository implements IRecordRepository {
     @Override
     public RecordDto save (RecordDto recordDto){
         Record record = mapper.toRecord(recordDto);
+        record.setCreatedDate(LocalDateTime.now());
         return mapper.toRecord(recordCrudRepository.save(record));
     }
 

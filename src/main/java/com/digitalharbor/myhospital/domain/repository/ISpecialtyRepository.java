@@ -9,5 +9,6 @@ public interface ISpecialtyRepository {
     List<SpecialtyDto> getAll();
     Optional<SpecialtyDto> get(int id);
     SpecialtyDto save (SpecialtyDto record);
+    SpecialtyDto update (SpecialtyDto record);
     void delete (int id);
 }

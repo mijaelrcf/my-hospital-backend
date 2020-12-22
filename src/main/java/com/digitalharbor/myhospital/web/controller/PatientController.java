@@ -45,7 +45,7 @@ public class PatientController {
     @DeleteMapping("/{id}")
     public ResponseEntity delete (@PathVariable("id") int id) {
         if (patientService.delete(id)) {
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(id, HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }

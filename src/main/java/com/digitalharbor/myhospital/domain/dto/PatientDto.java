@@ -2,15 +2,26 @@ package com.digitalharbor.myhospital.domain.dto;
 
 import com.digitalharbor.myhospital.persistence.entity.Record;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 public class PatientDto {
+    private Integer id;
     private String name;
     private String lastName;
-    private String birthdate;
+    private LocalDateTime birthdate;
     private String address;
     private String profilePicture;
+    private Integer hospitalId;
     //private Set<Record> records;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -28,11 +39,11 @@ public class PatientDto {
         this.lastName = lastName;
     }
 
-    public String getBirthdate() {
+    public LocalDateTime getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(LocalDateTime birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -52,11 +63,11 @@ public class PatientDto {
         this.profilePicture = profilePicture;
     }
 
-//    public Set<Record> getRecords() {
-//        return records;
-//    }
-//
-//    public void setRecords(Set<Record> records) {
-//        this.records = records;
-//    }
+    public Integer getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
+    }
 }

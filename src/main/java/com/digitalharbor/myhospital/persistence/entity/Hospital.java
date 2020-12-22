@@ -12,10 +12,10 @@ public class Hospital extends BaseEntity{
 
     private String name;
 
-    @OneToMany(mappedBy = "hospitals", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hospital", fetch = FetchType.LAZY)
     private Set<Doctor> doctors;
 
-    @OneToMany(mappedBy = "hospitals", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hospital", fetch = FetchType.LAZY)
     private Set<Patient> patients;
 
     public String getName() {

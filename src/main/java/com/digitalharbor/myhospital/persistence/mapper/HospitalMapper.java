@@ -14,7 +14,6 @@ public interface HospitalMapper {
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "name", target = "name"),
-            //@Mapping(source = "patients", target = "patients")
     })
     HospitalDto toHospital(Hospital hospital);
 
@@ -23,7 +22,9 @@ public interface HospitalMapper {
     @InheritInverseConfiguration
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "updatedDate", ignore = true)
-    @Mapping(target = "createdBy", ignore = true)
-    @Mapping(target = "updatedBy", ignore = true)
+    //@Mapping(target = "createdBy", ignore = true)
+    //@Mapping(target = "updatedBy", ignore = true)
+    @Mapping(target = "patients", ignore = true)
+    @Mapping(target = "doctors", ignore = true)
     Hospital toHospital(HospitalDto hospital);
 }

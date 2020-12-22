@@ -2,12 +2,15 @@ package com.digitalharbor.myhospital.persistence;
 
 import com.digitalharbor.myhospital.domain.dto.PatientDto;
 import com.digitalharbor.myhospital.domain.repository.IPatientRepository;
+import com.digitalharbor.myhospital.persistence.crud.HospitalCrudRepository;
 import com.digitalharbor.myhospital.persistence.crud.PatientCrudRepository;
+import com.digitalharbor.myhospital.persistence.entity.Hospital;
 import com.digitalharbor.myhospital.persistence.entity.Patient;
 import com.digitalharbor.myhospital.persistence.mapper.PatientMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +18,9 @@ import java.util.Optional;
 public class PatientRepository implements IPatientRepository {
     @Autowired
     private PatientCrudRepository patientCrudRepository;
+
+    @Autowired
+    private HospitalCrudRepository hospitalCrudRepository;
 
     @Autowired
     private PatientMapper mapper;
@@ -31,8 +37,13 @@ public class PatientRepository implements IPatientRepository {
     }
 
     @Override
-    public PatientDto save (PatientDto patientDto){
+    public PatientDto save (PatientDto patientDto) {
         Patient patient = mapper.toPatient(patientDto);
+        patient.setCreatedDate(LocalDateTime.now());
+        Optional<Hospital> optionalHospital = hospitalCrudRepository.findById(patientDto.getHospitalId());
+        if (optionalHospital.isPresent()) {
+            patient.setHospital(optionalHospital.get());
+        }
         return mapper.toPatient(patientCrudRepository.save(patient));
     }
 

@@ -9,17 +9,17 @@ public class Patient extends Person {
 
     @ManyToOne
     @JoinColumn(name = "hospital_id", referencedColumnName = "id", nullable = false)
-    private Hospital hospitals;
+    private Hospital hospital;
 
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
     private Set<Record> records;
 
-    public Hospital getHospitals() {
-        return hospitals;
+    public Hospital getHospital() {
+        return hospital;
     }
 
-    public void setHospitals(Hospital hospitals) {
-        this.hospitals = hospitals;
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
     public Set<Record> getRecords() {

@@ -1,11 +1,24 @@
 package com.digitalharbor.myhospital.domain.dto;
 
+import java.time.LocalDateTime;
+
 public class DoctorDto {
+    private Integer id;
     private String name;
     private String lastName;
-    private String birthdate;
+    private LocalDateTime birthdate;
     private String address;
     private String profilePicture;
+    private Integer hospitalId;
+    private Integer specialtyId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -23,11 +36,11 @@ public class DoctorDto {
         this.lastName = lastName;
     }
 
-    public String getBirthdate() {
+    public LocalDateTime getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(LocalDateTime birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -45,5 +58,21 @@ public class DoctorDto {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public Integer getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
+    }
+
+    public Integer getSpecialtyId() {
+        return specialtyId;
+    }
+
+    public void setSpecialtyId(Integer specialtyId) {
+        this.specialtyId = specialtyId;
     }
 }

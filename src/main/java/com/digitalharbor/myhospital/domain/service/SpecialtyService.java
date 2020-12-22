@@ -11,23 +11,27 @@ import java.util.Optional;
 @Service
 public class SpecialtyService {
     @Autowired
-    private ISpecialtyRepository specialtyRepository;
+    private ISpecialtyRepository iSpecialtyRepository;
 
     public List<SpecialtyDto> getAll() {
-        return specialtyRepository.getAll();
+        return iSpecialtyRepository.getAll();
     }
 
     public Optional<SpecialtyDto> get(int id) {
-        return specialtyRepository.get(id);
+        return iSpecialtyRepository.get(id);
     }
 
     public SpecialtyDto save(SpecialtyDto specialty) {
-        return specialtyRepository.save(specialty);
+        return iSpecialtyRepository.save(specialty);
+    }
+
+    public SpecialtyDto update(SpecialtyDto specialty) {
+        return iSpecialtyRepository.update(specialty);
     }
 
     public boolean delete (int id) {
         if (get(id).isPresent()) {
-            specialtyRepository.delete(id);
+            iSpecialtyRepository.delete(id);
             return true;
         } else {
             return false;

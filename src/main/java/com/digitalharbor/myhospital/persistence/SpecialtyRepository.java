@@ -8,6 +8,7 @@ import com.digitalharbor.myhospital.persistence.mapper.SpecialtyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,14 @@ public class SpecialtyRepository implements ISpecialtyRepository {
     @Override
     public SpecialtyDto save (SpecialtyDto specialtyDto){
         Specialty specialty = mapper.toSpecialty(specialtyDto);
+        specialty.setCreatedDate(LocalDateTime.now());
+        return mapper.toSpecialty(specialtyCrudRepository.save(specialty));
+    }
+
+    @Override
+    public SpecialtyDto update (SpecialtyDto specialtyDto){
+        Specialty specialty = mapper.toSpecialty(specialtyDto);
+        specialty.setUpdatedDate(LocalDateTime.now());
         return mapper.toSpecialty(specialtyCrudRepository.save(specialty));
     }
 

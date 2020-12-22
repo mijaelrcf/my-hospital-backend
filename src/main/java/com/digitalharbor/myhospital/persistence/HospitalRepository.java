@@ -8,6 +8,7 @@ import com.digitalharbor.myhospital.persistence.mapper.HospitalMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,14 @@ public class HospitalRepository implements IHospitalRepository {
     @Override
     public HospitalDto save (HospitalDto hospitalDto){
         Hospital hospital = mapper.toHospital(hospitalDto);
+        hospital.setCreatedDate(LocalDateTime.now());
+        return mapper.toHospital(hospitalCrudRepository.save(hospital));
+    }
+
+    @Override
+    public HospitalDto update (HospitalDto hospitalDto){
+        Hospital hospital = mapper.toHospital(hospitalDto);
+        hospital.setUpdatedDate(LocalDateTime.now());
         return mapper.toHospital(hospitalCrudRepository.save(hospital));
     }
 

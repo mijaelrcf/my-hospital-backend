@@ -11,23 +11,23 @@ import java.util.Optional;
 @Service
 public class RecordService {
     @Autowired
-    private IRecordRepository recordRepository;
+    private IRecordRepository iRecordRepository;
 
     public List<RecordDto> getAll() {
-        return recordRepository.getAll();
+        return iRecordRepository.getAll();
     }
 
     public Optional<RecordDto> get(int id) {
-        return recordRepository.get(id);
+        return iRecordRepository.get(id);
     }
 
     public RecordDto save(RecordDto record) {
-        return recordRepository.save(record);
+        return iRecordRepository.save(record);
     }
 
     public boolean delete (int id) {
         if (get(id).isPresent()) {
-            recordRepository.delete(id);
+            iRecordRepository.delete(id);
             return true;
         } else {
             return false;
