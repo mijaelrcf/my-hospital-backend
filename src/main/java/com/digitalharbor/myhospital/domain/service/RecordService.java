@@ -21,6 +21,10 @@ public class RecordService {
         return iRecordRepository.get(id);
     }
 
+    public Optional<List<RecordDto>> getByPatient(int patientId) {
+        return iRecordRepository.getByPatient(patientId);
+    }
+
     public RecordDto save(RecordDto record) {
         return iRecordRepository.save(record);
     }

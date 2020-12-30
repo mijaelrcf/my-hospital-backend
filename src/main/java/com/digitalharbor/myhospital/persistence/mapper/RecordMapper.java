@@ -9,15 +9,14 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PatientMapper.class})
 public interface RecordMapper {
     @Mappings({
             @Mapping(source = "description", target = "description"),
             @Mapping(source = "recordDate", target = "recordDate")
     })
     RecordDto toRecord(Record record);
-
-    List<RecordDto> toRecords (List<Record> recordList);
+    List<RecordDto> toRecords (List<Record> records);
 
     @InheritInverseConfiguration
     @Mapping(target = "createdDate", ignore = true)

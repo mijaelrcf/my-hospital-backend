@@ -37,6 +37,18 @@ public class RecordController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/patient/{patientId}")
+    @ApiOperation("Search records by patient id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 400, message = "NOT FOUND"),
+    })
+    public ResponseEntity<List<RecordDto>> getByPatient(@PathVariable("patientId") int patientId) {
+        return recordService.getByPatient(patientId)
+                .map(x -> new ResponseEntity<>(x, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @PostMapping()
     public ResponseEntity<RecordDto> save (@RequestBody RecordDto recordDto) {
         return new ResponseEntity<>(recordService.save(recordDto), HttpStatus.CREATED);
