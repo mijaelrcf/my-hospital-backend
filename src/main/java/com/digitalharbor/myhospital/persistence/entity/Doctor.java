@@ -8,14 +8,14 @@ import java.util.Set;
 @Table(name = "doctors")
 public class Doctor extends Person {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospital_id", referencedColumnName = "id", nullable = false)
     private Hospital hospital;
 
     @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
     private Set<Record> records;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "doctors_specialties", joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     private Set<Specialty> specialties = new HashSet<>();
