@@ -113,8 +113,8 @@ public class DBSeeder {
             System.out.println("Doctors table seeding...");
 
             DoctorDto d1 = new DoctorDto();
-            d1.setName("Juan");
-            d1.setLastName("Perez");
+            d1.setName("Lucio");
+            d1.setLastName("Lujan");
             LocalDateTime dateTime = LocalDateTime.parse("2018-05-05T11:50:55");
             d1.setBirthdate(dateTime);
             d1.setAddress("Zona Sur, Calle 10 #100");
@@ -122,8 +122,8 @@ public class DBSeeder {
             d1.setSpecialtyId(hospital.get().getId());
 
             DoctorDto d2 = new DoctorDto();
-            d2.setName("Jose");
-            d2.setLastName("Luna");
+            d2.setName("Noemi");
+            d2.setLastName("Duran");
             LocalDateTime dateTime2 = LocalDateTime.parse("2018-05-05T11:50:55");
             d2.setBirthdate(dateTime2);
             d2.setAddress("Zona Sur, Calle 15 #200");
@@ -131,8 +131,8 @@ public class DBSeeder {
             d2.setSpecialtyId(hospital.get().getId());
 
             DoctorDto d3 = new DoctorDto();
-            d3.setName("Pablo");
-            d3.setLastName("Lujan");
+            d3.setName("Nelson");
+            d3.setLastName("Rodriguez");
             LocalDateTime dateTime3 = LocalDateTime.parse("2018-05-05T11:50:55");
             d3.setBirthdate(dateTime3);
             d3.setAddress("Zona Sur, Calle 11 #310");
@@ -166,27 +166,25 @@ public class DBSeeder {
             p1.setAddress("Zona Sur, Calle 10 #100");
             p1.setHospitalId(hospital.get().getId());
 
-//            DoctorDto d2 = new DoctorDto();
-//            d2.setName("Jose");
-//            d2.setLastName("Luna");
-//            LocalDateTime dateTime2 = LocalDateTime.parse("2018-05-05T11:50:55");
-//            d2.setBirthdate(dateTime2);
-//            d2.setAddress("Zona Sur, Calle 15 #200");
-//            d2.setHospitalId(hospital.get().getId());
-//            d2.setSpecialtyId(hospital.get().getId());
-//
-//            DoctorDto d3 = new DoctorDto();
-//            d3.setName("Pablo");
-//            d3.setLastName("Lujan");
-//            LocalDateTime dateTime3 = LocalDateTime.parse("2018-05-05T11:50:55");
-//            d3.setBirthdate(dateTime3);
-//            d3.setAddress("Zona Sur, Calle 11 #310");
-//            d3.setHospitalId(hospital.get().getId());
-//            d3.setSpecialtyId(specialty.get().getId());
+            PatientDto p2 = new PatientDto();
+            p2.setName("Jose");
+            p2.setLastName("Mujica");
+            LocalDateTime dateTime2 = LocalDateTime.parse("2018-05-05T11:50:55");
+            p2.setBirthdate(dateTime2);
+            p2.setAddress("Zona Sur, Calle 10 #100");
+            p2.setHospitalId(hospital.get().getId());
+
+            PatientDto p3 = new PatientDto();
+            p3.setName("Dante");
+            p3.setLastName("Alvarez");
+            LocalDateTime dateTime3 = LocalDateTime.parse("2018-05-05T11:50:55");
+            p3.setBirthdate(dateTime3);
+            p3.setAddress("Zona Sur, Calle 10 #100");
+            p3.setHospitalId(hospital.get().getId());
 
             iPatientRepository.save(p1);
-//            iDoctorRepository.save(d2);
-            //iDoctorRepository.save(d3);
+            iPatientRepository.save(p2);
+            iPatientRepository.save(p3);
 
             System.out.println("Patients table seeded");
         } else {
@@ -205,23 +203,29 @@ public class DBSeeder {
             System.out.println("Records table seeding...");
 
             RecordDto r1 = new RecordDto();
-            r1.setDescription("Description test");
+            r1.setDescription("Description test 1");
             LocalDateTime dateTime = LocalDateTime.parse("2020-05-05T12:00:00");
             r1.setRecordDate(dateTime);
             r1.setDoctorId(1);
             r1.setPatientId(1);
 
-//            SpecialtyDto s2 = new SpecialtyDto();
-//            s2.setName("Cardiología");
-//            s2.setDescription("Descripcion Cardiología");
-//
-//            SpecialtyDto s3 = new SpecialtyDto();
-//            s3.setName("Dermatología");
-//            s3.setDescription("Descripcion Cardiología");
+            RecordDto r2 = new RecordDto();
+            r2.setDescription("Description test 2");
+            LocalDateTime dateTime2 = LocalDateTime.parse("2020-05-05T12:00:00");
+            r2.setRecordDate(dateTime2);
+            r2.setDoctorId(2);
+            r2.setPatientId(1);
+
+            RecordDto r3 = new RecordDto();
+            r3.setDescription("Description test 2");
+            LocalDateTime dateTime3 = LocalDateTime.parse("2020-05-05T12:00:00");
+            r3.setRecordDate(dateTime3);
+            r3.setDoctorId(2);
+            r3.setPatientId(2);
 
             iRecordRepository.save(r1);
-            //iSpecialtyRepository.save(s2);
-            //iSpecialtyRepository.save(s3);
+            iRecordRepository.save(r2);
+            iRecordRepository.save(r3);
 
             System.out.println("Records table seeded");
         } else {
